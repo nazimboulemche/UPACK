@@ -33,7 +33,7 @@ model Objet {
   code_postal Int
   ville      String
   user        User     @relation(fields: [userId], references: [id])
-  img        bytea
+  img        String
 
 }
 
