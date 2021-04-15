@@ -98,4 +98,17 @@ api.put('/:id', async (req, res) => {
   }
 )
 
+// find an user
+api.get('/:id', async (req, res) => {
+  const prisma = new PrismaClient()
+  try {
+      const user = await prisma.user.findUnique({ where: { id: Number(req.params.id)} })
+
+      return res.json(user)
+  } catch ( err ) {
+      console.log(err)
+      return res.status(500).json({ err: 'Something went wrong'})
+  }
+})
+
 export default api
