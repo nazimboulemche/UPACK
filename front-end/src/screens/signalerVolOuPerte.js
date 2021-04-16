@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, SafeAreaView, TextInput, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import ImagePickerExample from '../components/imgPicker'
+import ImagePickerExample from '../components/imgPicker';
 
 export default function signalerVolOuPerte({navigation}) {
     return (
@@ -9,9 +9,9 @@ export default function signalerVolOuPerte({navigation}) {
       
       <View style = {styles.font}>
         
-        <Icon name="arrow-left" size={30} color = '#EB5D35'/>
+        <Icon name="arrow-left" size={30} color = '#EB5D35' onPress={() => navigation.navigate('SplashScreen')}/>
         <Text style ={styles.title}>Signaler une Perte/Vol</Text>
-        <Icon name="gear" size={30} color = '#EB5D35'/>
+        <Icon name="gear" size={30} color = '#EB5D35' onPress={() => navigation.navigate('Parametres')} />
       </View>  
         
         <Text style ={styles.text1}>Description de l'objet perdu</Text>
@@ -52,7 +52,7 @@ export default function signalerVolOuPerte({navigation}) {
         </View>
 
 
-        <TouchableOpacity style = {styles.ConnexionButton}>
+        <TouchableOpacity style = {styles.ConnexionButton} onPress={() => navigation.navigate('SplashScreen')}>
             <Text style = {styles.ConnexionButtonText}> VALIDER </Text>
         </TouchableOpacity>
         

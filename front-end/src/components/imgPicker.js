@@ -34,7 +34,7 @@ export default function ImagePickerExample() {
 
   return (
     <TouchableOpacity onPress={pickImage} style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Image source={require("../../assets/paperclip.png")} style={{ width: 40, height: 40 }} />
+      <Image source={require("../assets/paperclip.png")} style={{ width: 40, height: 40 }} />
     </TouchableOpacity>
   );
 }

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View, } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View, Image} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import React from 'react'
@@ -14,12 +14,12 @@ export function Dashboard({navigation}) {
               </View>
               <TouchableOpacity onPress={() => navigation.navigate('Parametres')}> <Icon style={styles.touch} name="gear" size={30} color= '#EB5D35'  /> </TouchableOpacity>
            </View>
-           
+           <View><Image source={require('../assets/map.PNG')}/></View>
            <View style={styles.icons}>
            <TouchableOpacity> <Icon style={styles.touch} name="home" size={30} color ='#e9c46a' />  </TouchableOpacity> 
-           <TouchableOpacity> <Icon style={styles.touch} name="plus-circle" size={30} color= '#EB5D35' />  </TouchableOpacity>
+           <TouchableOpacity onPress={() => navigation.navigate('signalerVolOuPerte')}> <Icon style={styles.touch} name="plus-circle" size={30} color= '#EB5D35' />  </TouchableOpacity>
            <TouchableOpacity> <Icon style={styles.touch} name="comments" size={30} color= '#EB5D35' />  </TouchableOpacity>
-           <TouchableOpacity> <Icon style={styles.touch} name="list" size={30} color= '#EB5D35' />  </TouchableOpacity>
+           <TouchableOpacity onPress={() => navigation.navigate('signalerUneAnnonce')}>  <Icon style={styles.touch} name="list" size={30} color= '#EB5D35'  />  </TouchableOpacity>
            </View>
         </View>
         

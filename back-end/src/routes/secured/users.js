@@ -16,7 +16,8 @@ api.get('/', async (req, res) => {
         email: true,
         createdAt: true,
         updatedAt: true,
-        id: true
+        id: true,
+        zipCode: true,
       }
     })
 

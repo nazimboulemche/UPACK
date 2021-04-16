@@ -6,7 +6,7 @@ export default function signalerUneAnnonce({navigation}) {
     return (
     <View style = {styles.container}>
         <View >
-            <Icon name="arrow-left" size={30} color = '#EB5D35'/>
+            <Icon name="arrow-left" size={30} color = '#EB5D35' onPress={() => navigation.navigate('SplashScreen')}/>
             <Text style ={styles.title}>Signaler une Annonce</Text>
         </View>
             
