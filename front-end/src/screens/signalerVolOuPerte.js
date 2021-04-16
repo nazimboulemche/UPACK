@@ -4,6 +4,42 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import ImagePickerExample from '../components/imgPicker';
 
 export default function signalerVolOuPerte({navigation}) {
+    const handleDescription = (value) => {
+        setDescription(value)
+    }
+    
+    const handleAdress = (value) => {
+        setAdress(value)
+    }
+    
+    const handleCity = (value) => {
+        setCity(value)
+    }
+    
+    const handleZipcode = (value) => {
+        setZipcode(value)
+
+    const handleSubmit = async () => {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/items`, {
+                method: 'POST',
+                mode: 'cors',
+                header: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({description, adress, city})
+            });
+            const result = await response.json()
+            if (result === '200') {
+                await Alert.alert( 'Success',
+                [
+                    { text: "OK", onPress: () => navigation.navigate('Dashboard')}
+                ])
+                reset()
+                navigation.navigate('Dashboard') 
+            }
+            Alert.alert('There was an issue')
+        }
+    }
     return (
     <View style = {styles.container}>
       
@@ -19,6 +55,7 @@ export default function signalerVolOuPerte({navigation}) {
                placeholder = "  Description de votre objet  "
                placeholderTextColor = "gray"
                autoCapitalize = "none"
+               onChangeText = {handleDescription}
             />
         
         <Text style ={styles.text}>Adresse à laquelle l'objet a été perdu:</Text>
@@ -26,6 +63,7 @@ export default function signalerVolOuPerte({navigation}) {
                placeholder = "  écrire ici  "
                placeholderTextColor = "gray"
                autoCapitalize = "none"
+               onChangeText = {handleAdress}
             />
         
         <Text style ={styles.text}>Ville:</Text>
@@ -33,6 +71,7 @@ export default function signalerVolOuPerte({navigation}) {
                placeholder = "  ex: Paris  "
                placeholderTextColor = "gray"
                autoCapitalize = "none"
+               onChangeText = {handleCity}
             />
         
         <Text style ={styles.text}>Code postal:</Text>
@@ -41,6 +80,7 @@ export default function signalerVolOuPerte({navigation}) {
                placeholderTextColor = "gray"
                autoCapitalize = "none"
                keyboardType={'numeric'}
+               onChangeText = {handleZipcode}
             />
         <View style ={styles.fontImage}>
             <Text style ={styles.text}>Ajouter une photo de l'objet:</Text>
@@ -52,7 +92,7 @@ export default function signalerVolOuPerte({navigation}) {
         </View>
 
 
-        <TouchableOpacity style = {styles.ConnexionButton} onPress={() => navigation.navigate('SplashScreen')}>
+        <TouchableOpacity style = {styles.ConnexionButton} onPress={handleSubmit}>
             <Text style = {styles.ConnexionButtonText}> VALIDER </Text>
         </TouchableOpacity>
         

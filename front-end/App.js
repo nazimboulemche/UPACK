@@ -13,6 +13,10 @@ import Delete from './src/screens/deleteaccount';
 import signalerVolOuPerte from './src/screens/signalerVolOuPerte';
 import annonceDetail from './src/screens/annonceDetail';
 import signalerUneAnnonce from './src/screens/signalerUneAnnonce';
+import ForgotPasswordScreen from './src/screens/ForgotPasswordScreen';
+import LoginScreen from './src/screens/LoginScreen';
+import RegisterScreen from './src/screens/RegisterScreen';
+import StartScreen from './src/screens/StartScreen';
 
 const Stack = createStackNavigator()
 export default function App() {
@@ -29,6 +33,10 @@ export default function App() {
       <Stack.Screen name="signalerVolOuPerte" component={signalerVolOuPerte} />
       <Stack.Screen name="annonceDetail" component={annonceDetail} />
       <Stack.Screen name="signalerUneAnnonce" component={signalerUneAnnonce} />
+      <Stack.Screen name="ForgotPasswordScreen" component={ForgotPasswordScreen} />
+      <Stack.Screen name="LoginScreen" component={LoginScreen} />
+      <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
+      <Stack.Screen name="StartScreen" component={StartScreen} />
     </Stack.Navigator>
   </NavigationContainer>  
   );

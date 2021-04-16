@@ -5,6 +5,44 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import React from 'react'
 
 export function Edit({navigation}) {
+    const handleFirstname = (value) => {
+        setFirstname(value)
+    }
+    
+    const handleLastname = (value) => {
+        setLastname(value)
+    }
+    
+    const handleEmail = (value) => {
+        setEmail(value)
+    }
+    
+    const handleTelenumber = (value) => {
+        setTelenumber(value)
+    }
+
+    const handleSubmit = async () => {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/api/users/${id}`, {
+            method: 'PUT',
+            mode: 'cors',
+            header: {
+                'Content_Type': 'application/json'
+            },
+            body: JSON.stringify({firstname, lastname, email, telenumber})
+        });
+        const result = await response.json()
+        if (result === '200') {
+            await Alert.alert( 'Success',
+            [
+                { text: "OK", onPress: () => navigation.navigate('Setting')}
+            ])
+            reset()
+            navigation.navigate('Setting')
+        }
+        Alert.alert('There was an issue')
+    }
+
+
     return(
         <View>
               <Text style={styles.header}>Modifier le profile</Text>
@@ -12,18 +50,18 @@ export function Edit({navigation}) {
 
               <View style={styles.all}>
                   <Text style={styles.txt}>Nom: *</Text>
-                  <TextInput style={styles.input}/>
+                  <TextInput style={styles.input} onChangeText={handleLastname} />
 
                   <Text style={styles.txt}>Prenom: *</Text>
-                  <TextInput style={styles.input} />
+                  <TextInput style={styles.input} onChangeText={handleFirstname} />
 
                   <Text style={styles.txt}>Adresse mail: *</Text>
-                  <TextInput style={styles.input}/>
+                  <TextInput style={styles.input} onChangeText={handleEmail} />
 
                   <Text style={styles.txt}>Numéro de telephone: *</Text>
-                  <TextInput style={styles.input} />
+                  <TextInput style={styles.input} onChangeText={handleTelenumber} />
               </View>
-              <TouchableOpacity style = {styles.ConnexionButton} >
+              <TouchableOpacity style = {styles.ConnexionButton} onPress={handleSubmit} >
                 <Text style = {styles.ConnexionButtonText}> VALIDER </Text>
                </TouchableOpacity>
        </View>
